@@ -10,6 +10,7 @@ flask-sqlalchemy = "*"
 numpy = "*"
 pandas = "*"
 tensorflow = "*"
+sklearn = "*"
 
 [dev-packages]
 
