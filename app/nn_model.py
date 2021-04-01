@@ -57,4 +57,4 @@ model.fit(X, y, epochs=10, batch_size=10, verbose=0);
 
 print('Model accuracy: ', model.evaluate(X, y)[1]*100)
 
-model.save('kevin_model')
+model.save('final_model')
