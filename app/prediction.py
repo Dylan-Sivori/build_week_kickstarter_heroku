@@ -7,5 +7,5 @@ def predict_user():
     dict = {col.name: [getattr(User.query.all()[-1], str(col.name))] for col in User.__table__.columns}
     df = pd.DataFrame(dict).set_index('id')
     df = df.values.tolist()
-    reconstructed_model = load_model('final_model')
+    reconstructed_model = load_model('app/final_model')
     return str(reconstructed_model.predict(df, batch_size=10))
