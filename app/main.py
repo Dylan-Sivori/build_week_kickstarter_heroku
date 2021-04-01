@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from .models import User, DB
+from .prediction import predict_user
 
 # def create_app():
 app = Flask(__name__)
@@ -32,20 +33,13 @@ def user_submitted():
                   )
     DB.session.add(record)
     DB.session.commit()
-    output='I am output'
-    # pred = predict_user()
-    # if pred == '[[0.]]':
-    #     output = 'Your kickstarter will fail! Good Luck!'
-    # else:
-    #     output = 'Your destined for success. Go forth!'
+    pred = predict_user()
+    if pred == '[[0.]]':
+        output = 'Your kickstarter will fail! Good Luck!'
+    else:
+        output = 'Your destined for success. Go forth!'
     return render_template("user.html", output=output)
-                           # project_name=project_name,
-                           # category=category,
-                           # main_category=main_category,
-                           # currency=currency,
-                           # deadline=deadline,
                            # goal=goal,
-                           # launched=launched,
                            # pledged=pledged,
                            # backers=backers,
                            # country=country,
